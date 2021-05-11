@@ -8,10 +8,9 @@ body {
 }
 
 body {
-  margin: 2vmin;
+  margin: 0;
   padding: 0;
   height: 100vh;
-  background-image: radial-gradient(#e66465, #9198e5);
 }
 
 h1 {
@@ -52,8 +51,6 @@ h2 {
   display: flex;
   align-content: center;
   justify-content: center;
-  align-self: center;
-  justify-self: center;
   z-index: -200;
   pointer-events: none;
 }
@@ -102,7 +99,7 @@ h2 {
 }
 
 .pigeonPara {
-  font-size: 1.5vmin;
+  font-size: 1.85vmin;
   padding: 1vmin;
   margin: 1vmin;
 }
@@ -114,8 +111,8 @@ h2 {
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 400ms ease-in-out;
-  border: 1px solid black;
-  border-radius: 1vmin;
+  border: 5px solid black;
+  border-radius: 20px;
   z-index: 100;
   width: 100vmin;
   height: 50vmin;
@@ -131,7 +128,7 @@ h2 {
 
 .extract-content {
   flex-basis: 50%;
-  border-right: 0.1vmin solid gray;
+  border-right: 1px solid gray;
 }
 
 .extract-image {
@@ -154,4 +151,18 @@ h2 {
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+#wall {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1000;
+}
+
+[alt='wallpaper'] {
+  width: 100vw;
+  height: 100vh;
 }
