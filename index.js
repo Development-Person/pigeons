@@ -43,6 +43,7 @@ overlay.addEventListener('click', () => {
   overlay.classList.remove('active');
 });
 
+//function to add a modal to the page
 function popup(id) {
   const pigeonModal = document.getElementById(id);
 
@@ -70,36 +71,47 @@ function addToPigeons(pigeon) {
   const newPigeonTitle = document.createElement('h2');
   const newPigeonExtract = document.createElement('div');
   const newPigeonPara = document.createElement('div');
-  let newPigeonImage = '';
+  const extractContent = document.createElement('div');
+  const extractImage = document.createElement('div');
+
+  //function to add an image from the wiki
+  function addImage(source, title, div, location) {
+    let newPigeonImage = document.createElement('img');
+    newPigeonImage.src = source;
+    newPigeonImage.classList.add(`pigeonimage-${location}`);
+    newPigeonImage.onclick = function () {
+      popup(title);
+    };
+    newPigeonImage.id = `${title} image`;
+    div.appendChild(newPigeonImage);
+  }
 
   //adding classes and ids
   pigeonDiv.classList.add('pigeonDiv');
   newPigeonExtract.classList.add(`pigeonExtract`);
   newPigeonPara.classList.add(`pigeonPara`);
+  extractContent.classList.add(`extract-content`);
+  extractImage.classList.add(`extract-image`);
   newPigeonExtract.id = `${pigeon.title}`;
 
   //adding content
   newPigeonTitle.innerHTML = `${pigeon.title}`;
-  newPigeonPara.innerHTML = `${pigeon.extract} \n for more information: ${pigeon.content_urls.desktop.page}`;
+  newPigeonPara.innerHTML = `${pigeon.extract} <br><br> For more information <a target='_blank' href="${pigeon.content_urls.desktop.page}">visit the Wikipedia page.</a>`;
 
   //appending children to parent div
-  newPigeonExtract.appendChild(newPigeonTitle);
-  newPigeonExtract.appendChild(newPigeonPara);
-  pigeonDiv.appendChild(newPigeonExtract);
   pigeons.appendChild(pigeonDiv);
+  pigeonDiv.appendChild(newPigeonExtract);
+  newPigeonExtract.appendChild(extractContent);
+  newPigeonExtract.appendChild(extractImage);
+  extractContent.appendChild(newPigeonTitle);
+  extractContent.appendChild(newPigeonPara);
 
   console.log(pigeon.content_urls.desktop.page);
 
-  //only if the wiki has an image
+  //insert image in homepage and modal if the wiki has an image
   if (pigeon.originalimage) {
-    newPigeonImage = document.createElement('img');
-    newPigeonImage.src = pigeon.originalimage.source;
-    newPigeonImage.classList.add('pigeonimage');
-    newPigeonImage.onclick = function () {
-      popup(pigeon.title);
-    };
-    newPigeonImage.id = `${pigeon.title} image`;
-    pigeonDiv.appendChild(newPigeonImage);
+    addImage(pigeon.originalimage.source, pigeon.title, pigeonDiv, 'front');
+    addImage(pigeon.originalimage.source, pigeon.title, extractImage, 'modal');
   }
 }
 

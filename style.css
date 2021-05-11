@@ -26,7 +26,7 @@ h2 {
   font-size: 3vmin;
   padding: 1vmin;
   margin: 1vmin;
-  border-bottom: 0.1vmin solid gray;
+  /* border-bottom: 0.1vmin solid gray; */
 }
 
 #container {
@@ -68,11 +68,19 @@ h2 {
   justify-self: center;
 }
 
-.pigeonimage {
+.pigeonimage-front {
   max-width: 100%;
   max-height: 100%;
   align-self: center;
   justify-self: center;
+}
+
+.pigeonimage-modal {
+  max-width: 100%;
+  max-height: 100%;
+  align-self: center;
+  justify-self: center;
+  margin: 1vmin;
 }
 
 #pigeons {
@@ -101,6 +109,7 @@ h2 {
 
 .pigeonExtract {
   position: fixed;
+  display: flex;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
@@ -108,14 +117,25 @@ h2 {
   border: 1px solid black;
   border-radius: 1vmin;
   z-index: 100;
-  width: 75vmin;
+  width: 100vmin;
   height: 50vmin;
   background-color: white;
-  padding: 1vmin 2vmin;
+  padding: 2vmin 2vmin;
+  align-content: center;
+  justify-content: center;
 }
 
 .pigeonExtract.active {
   transform: translate(-50%, -50%) scale(1);
+}
+
+.extract-content {
+  flex-basis: 50%;
+  border-right: 0.1vmin solid gray;
+}
+
+.extract-image {
+  flex-basis: 50%;
 }
 
 #overlay {
