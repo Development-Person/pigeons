@@ -1,0 +1,137 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+body {
+  margin: 2vmin;
+  padding: 0;
+  height: 100vh;
+  background-image: radial-gradient(#e66465, #9198e5);
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 6vmin;
+  margin-bottom: 9vmin;
+  color: rgba(0, 0, 100);
+  text-shadow: 0.1vmin 0.1vmin blanchedalmond;
+}
+
+h2 {
+  font-size: 3vmin;
+  padding: 1vmin;
+  margin: 1vmin;
+  border-bottom: 0.1vmin solid gray;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#top {
+  width: fit-content;
+  height: fit-content;
+  justify-self: center;
+  align-self: center;
+}
+
+#bottom {
+  justify-self: center;
+  justify-content: center;
+}
+
+#frame {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  z-index: -200;
+  pointer-events: none;
+}
+
+#frame-image {
+  position: absolute;
+  width: 120vmin;
+  height: auto;
+  z-index: -200;
+  pointer-events: none;
+  align-self: center;
+  justify-self: center;
+}
+
+.pigeonimage {
+  max-width: 100%;
+  max-height: 100%;
+  align-self: center;
+  justify-self: center;
+}
+
+#pigeons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4vmin;
+}
+
+.pigeonDiv {
+  display: flex;
+  background-color: whitesmoke;
+  align-content: center;
+  justify-content: center;
+  padding: 1vmin;
+  border-radius: 1vmin;
+  width: 25vmin;
+  height: 25vmin;
+  pointer-events: auto;
+}
+
+.pigeonPara {
+  font-size: 1.5vmin;
+  padding: 1vmin;
+  margin: 1vmin;
+}
+
+.pigeonExtract {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 400ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 1vmin;
+  z-index: 100;
+  width: 75vmin;
+  height: 50vmin;
+  background-color: white;
+  padding: 1vmin 2vmin;
+}
+
+.pigeonExtract.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 400ms ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
