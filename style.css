@@ -16,7 +16,6 @@ body {
 h1 {
   font-family: 'Great Vibes', cursive;
   font-size: 6vmin;
-  margin-bottom: 9vmin;
   color: rgba(0, 0, 100);
   text-shadow: 0.1vmin 0.1vmin blanchedalmond;
 }
@@ -30,9 +29,11 @@ h2 {
 
 #container {
   display: flex;
+  height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  pointer-events: none;
 }
 
 #top {
@@ -40,18 +41,21 @@ h2 {
   height: fit-content;
   justify-self: center;
   align-self: center;
+  z-index: 5;
 }
 
 #bottom {
   justify-self: center;
   justify-content: center;
+  pointer-events: none;
 }
 
 #frame {
   display: flex;
+  margin-bottom: 15vmin;
   align-content: center;
   justify-content: center;
-  z-index: -200;
+  z-index: 3;
   pointer-events: none;
 }
 
@@ -59,10 +63,12 @@ h2 {
   position: absolute;
   width: 120vmin;
   height: auto;
-  z-index: -200;
-  pointer-events: none;
+  z-index: 2;
   align-self: center;
   justify-self: center;
+  pointer-events: none;
+  border-radius: 0.1vmin;
+  box-shadow: 0.5vmin 0.5vmin 1vmin rgba(0, 0, 0, 0.5);
 }
 
 .pigeonimage-front {
@@ -84,24 +90,26 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4vmin;
+  pointer-events: all;
+  z-index: 2;
 }
 
 .pigeonDiv {
   display: flex;
-  background-color: whitesmoke;
   align-content: center;
   justify-content: center;
   padding: 1vmin;
   border-radius: 1vmin;
   width: 25vmin;
   height: 25vmin;
-  pointer-events: auto;
+  pointer-events: all;
 }
 
 .pigeonPara {
   font-size: 1.85vmin;
   padding: 1vmin;
   margin: 1vmin;
+  z-index: 100;
 }
 
 .pigeonExtract {
@@ -124,15 +132,18 @@ h2 {
 
 .pigeonExtract.active {
   transform: translate(-50%, -50%) scale(1);
+  z-index: 1000;
 }
 
 .extract-content {
   flex-basis: 50%;
   border-right: 1px solid gray;
+  z-index: 1000;
 }
 
 .extract-image {
   flex-basis: 50%;
+  z-index: 1000;
 }
 
 #overlay {
@@ -159,7 +170,8 @@ h2 {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1000;
+  z-index: 1;
+  pointer-events: none;
 }
 
 [alt='wallpaper'] {
