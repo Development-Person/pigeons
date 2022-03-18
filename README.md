@@ -9,30 +9,6 @@
 
 > A small website made for fun to showcase the wonderful world of pigeons. Queries the wikipedia API.
 
-### 🏠 [Homepage](https://tweetcomp.herokuapp.com/)
-
-## Prerequisites
-
-- node 14.15.5
-
-## Install
-
-```sh
-npm install
-```
-
-## Usage
-
-```sh
-npm run start
-```
-
-## Run tests
-
-```sh
-npm run test
-```
-
 ## Author
 
 👤 **Ibrahim Achkar**
