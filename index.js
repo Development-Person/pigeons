@@ -4,7 +4,8 @@ const indianFantailURL = `https://en.wikipedia.org/api/rest_v1/page/summary/Indi
 const victoriaCrownedPigeonURL = `https://en.wikipedia.org/api/rest_v1/page/summary/Victoria_crowned_pigeon`;
 const pinkNeckedGreenPigeonURL = `https://en.wikipedia.org/api/rest_v1/page/summary/Pink-necked_green_pigeon`;
 const domesticPigeonURL = `https://en.wikipedia.org/api/rest_v1/page/summary/Domestic_pigeon`;
-const vanuatuImperialPigeonURL = `https://en.wikipedia.org/api/rest_v1/page/summary/Vanuatu_imperial_pigeon`;
+// const vanuatuImperialPigeonURL = `https://en.wikipedia.org/api/rest_v1/page/summary/Vanuatu_imperial_pigeon`;
+const wongaPigeonURL = `https://en.wikipedia.org/api/rest_v1/page/summary/Wonga_pigeon`;
 
 /*
 fetches url
@@ -26,7 +27,8 @@ const indianFantail = await fetchData(indianFantailURL);
 const victoriaCrownedPigeon = await fetchData(victoriaCrownedPigeonURL);
 const pinkNeckedGreenPigeon = await fetchData(pinkNeckedGreenPigeonURL);
 const domesticPigeon = await fetchData(domesticPigeonURL);
-const vanuatuImperialPigeon = await fetchData(vanuatuImperialPigeonURL);
+// const vanuatuImperialPigeon = await fetchData(vanuatuImperialPigeonURL);
+const wongaPigeon = await fetchData(wongaPigeonURL);
 
 /*
 writing the pigeons to html
@@ -36,8 +38,8 @@ const pigeons = document.getElementById('pigeons');
 
 /*
 creates the overlay
-when you click on the overlay: 
-if class active exists = turns on the popup by adding class active to the overlay and pigeon text 
+when you click on the overlay:
+if class active exists = turns on the popup by adding class active to the overlay and pigeon text
 if active = removes the popup by removing the active class
 */
 const overlay = document.getElementById('overlay');
@@ -76,14 +78,14 @@ function popup(id) {
 takes a pigeon json
 creates the following tree of elements:
   1: pigeonDiv to hold all elements to do with that pigeon
-    2: pigeonImage which appears on the pigeonDiv 
+    2: pigeonImage which appears on the pigeonDiv
     2: pigeonModal holds all the elements that are in the popup modal
       3: pigeonModalContent holds all the information about the pigeon in the modal
           4: pigeonTitle holds the pigeon title
           4: pigeonPara holds an extract of the wiki article
       3: pigeonModalImage holds the image to go in the pigeon in the modal
           5: pigeonImage which also appears inside the modal
-contains a check to see if an image is present and then calls a function 
+contains a check to see if an image is present and then calls a function
 to add the image to the two different spots
 */
 function addToPigeons(pigeon) {
@@ -129,7 +131,9 @@ function addToPigeons(pigeon) {
 
   //insert image in homepage and modal if the wiki has an image
   if (pigeon.originalimage) {
-    addImage(pigeon.originalimage.source, pigeon.title, pigeonDiv, 'front');
+    let name = pigeon.title.toLowerCase().replace(/\s/g, '');
+    console.log(name);
+    addImage(`public/${name}.png`, pigeon.title, pigeonDiv, 'front');
     addImage(
       pigeon.originalimage.source,
       pigeon.title,
@@ -140,8 +144,8 @@ function addToPigeons(pigeon) {
 }
 
 addToPigeons(africanGreenPigeon);
-addToPigeons(indianFantail);
 addToPigeons(victoriaCrownedPigeon);
 addToPigeons(pinkNeckedGreenPigeon);
 addToPigeons(domesticPigeon);
-addToPigeons(vanuatuImperialPigeon);
+addToPigeons(wongaPigeon);
+addToPigeons(indianFantail);
